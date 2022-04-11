@@ -1,0 +1,16 @@
+{
+    "files.associations": {
+        "array": "cpp",
+        "string_view": "cpp",
+        "initializer_list": "cpp",
+        "utility": "cpp",
+        "*.tcc": "cpp",
+        "optional": "cpp",
+        "memory": "cpp",
+        "numeric": "cpp",
+        "cmath": "cpp",
+        "stdio.h": "c",
+        "dynamicarray.h": "c",
+        "stdlib.h": "c"
+    }
+}
