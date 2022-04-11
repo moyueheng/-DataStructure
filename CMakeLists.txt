@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 3.16.3 )
 # Set the project name
 project ( DataStructure )
 
-include_directories(include include/list)
+include_directories(include)
 aux_source_directory(src SRCS)
 
 # 在终端打印

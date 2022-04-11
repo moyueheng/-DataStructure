@@ -30,5 +30,22 @@ struct dynamicArray *init_dynamicArray(int capacity);
  */
 void print_dynamicArray(struct dynamicArray * arr);
 
+/**
+ * @brief 动态数组插入
+ * 
+ * @param arr 
+ * @param data 
+ * @param index 插入的索引
+ */
+void insert_dynamicArray(struct dynamicArray * arr, void * data, int index);
+
+/**
+ * @brief 遍历动态数组
+ * 
+ * @param arr 
+ */
+void foreach_dynamicArray(struct dynamicArray * arr, void (* myPrint)(void *));
+
+
 
 #endif // _DYNAMIC_ARRAY_H_
