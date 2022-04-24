@@ -35,7 +35,7 @@ void print_dynamicArray(struct dynamicArray * arr);
  * 
  * @param arr 
  * @param data 
- * @param index 插入的索引
+ * @param index 插入的索引，不支持负数插入
  */
 void insert_dynamicArray(struct dynamicArray * arr, void * data, int index);
 

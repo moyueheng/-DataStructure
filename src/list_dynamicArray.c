@@ -51,6 +51,7 @@ void insert_dynamicArray(struct dynamicArray *arr, void *data, int index)
     // 位置是否合理
     if (index < 0 || index > arr->m_Size)
     {
+        index = arr->m_Size; // 强制把位置放到最后实现尾插
         return;
     }
     // 扩容

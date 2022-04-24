@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include "tils.h"
 #include "list_dynamicArray.h"
+#include "bubble_sort.h"
+#include <stdlib.h>
 
 struct Person
 {
@@ -35,8 +37,24 @@ void test_dynamicArray()
     foreach_dynamicArray(darr, printPerson);
 }
 
+void test_sort()
+{
+    int arr[] = {5, 4, 3, 234, 6, 56, 34, 1, 32, 14, 34};
+    int len = sizeof(arr) / sizeof(*arr);
+    show_nums(arr, len);
+    buble_sort_3(arr, len);
+    show_nums(arr, len);
+}
+
 int main(int argc, char const *argv[])
 {
     // struct dynamicArray *init_dynamicArray(int capacity);
-    test_dynamicArray();
+    // test_dynamicArray();
+    // test_sort();
+    int *p = malloc(sizeof(int));
+    free(p);
+    printf("第1次free");
+    free(p);
+    printf("第2次free");
+    return 0;
 }
