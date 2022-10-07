@@ -12,6 +12,8 @@
         "stdio.h": "c",
         "dynamicarray.h": "c",
         "stdlib.h": "c",
-        "string.h": "c"
+        "string.h": "c",
+        "new": "cpp",
+        "iostream": "cpp"
     }
 }
