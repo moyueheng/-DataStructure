@@ -1,1 +1,0 @@
-Hanoi *s = new Hano
