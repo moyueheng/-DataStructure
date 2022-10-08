@@ -14,6 +14,8 @@
         "stdlib.h": "c",
         "string.h": "c",
         "new": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "iosfwd": "cpp",
+        "ostream": "cpp"
     }
 }

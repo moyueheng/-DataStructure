@@ -2,8 +2,8 @@
  * @Author: Heng moyueheng@126.com
  * @Date: 2022-10-06 20:09:46
  * @LastEditors: Heng moyueheng@126.com
- * @LastEditTime: 2022-10-06 21:49:46
- * @FilePath: /DataStructure/src/递归.cpp
+ * @LastEditTime: 2022-10-08 02:32:34
+ * @FilePath: /DataStructure/递归/01斐波那契.cpp
  * @Description: https://space.bilibili.com/343917159
  *
  * Copyright (c) 2022 by Heng moyueheng@126.com, All Rights Reserved.
@@ -17,7 +17,7 @@ class Fib
 private:
 public:
     /**
-     * @description: 不带记忆的斐波那契数计算 空间O(n)， 时间O(n^2)
+     * @description: 不带记忆的斐波那契数计算 空间O(n)， 时间O(2^n), 数高为n，树的节点个数就是2^n级别
      * @param {int} n
      * @return {int}
      */
@@ -89,7 +89,7 @@ public:
         int *arr = new int[2];
         arr[0] = arr[1] = 1;
         for (int i = 3; i < n + 1; i++)
-        { 
+        {
             // arr[i % 2] = arr[(i - 1) % 2] + arr[(i - 2) % 2];
             arr[i & 1] = arr[(i - 1) & 1] + arr[(i - 2) & 1];
         }
