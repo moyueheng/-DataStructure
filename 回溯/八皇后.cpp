@@ -21,10 +21,12 @@ public:
     static void main()
     {
         Main *m = new Main();
-        m->placeQueens(4);
+        m->placeQueens(8);
     }
 
-    int *cols;
+    bool *cols;      // 某一列是否有皇后
+    bool *left_top;  // 左上角到右下角的斜线角线，有没有皇后， 2n-1
+    bool *right_top; // 右上角到左下角的对角线
     int n;
     int ways;
 
@@ -34,7 +36,9 @@ public:
         {
             return;
         }
-        this->cols = new int[n];
+        this->cols = new bool[n];
+        this->left_top = new bool[(n << 1) + 1];
+        this->right_top = new bool[(n << 1) + 1];
         this->n = n;
         this->ways = 0;
         place(0);
@@ -47,7 +51,8 @@ public:
         {
             for (int col = 0; col < this->n; col++)
             {
-                if (this->cols[row] == col)
+
+                if (this->cols[row]) // 这个
                 {
                     printf("1 ");
                 }
@@ -60,7 +65,14 @@ public:
         }
         printf("---------------------\n");
     }
-
+    void print_arr(bool *arr, int n)
+    {
+        for (int i = 0; i < n; i++)
+        {
+            printf("%d", arr[i]);
+        }
+        printf("\n");
+    }
     /***
      * @description: 从第row航开始摆放皇后
      * @param {int} row
@@ -70,7 +82,10 @@ public:
     {
         if (row == this->n)
         {
-            this->show();
+            // this->show();
+            print_arr(this->cols, n);
+            print_arr(this->left_top, 2 * n - 1);
+            print_arr(this->right_top, 2 * n - 1);
 
             this->ways += 1;
             return;
@@ -78,12 +93,27 @@ public:
         // 从第一列开始遍历
         for (int col = 0; col < this->n; col++)
         {
-            if (this->isValid(row, col))
-            {
-                // printf("可以摆皇后\n");
-                cols[row] = col; // 放置皇后在第row行，第col列
-                place(row + 1);  // 准备去摆放下一行
-            }
+            // 获得 row行， col列所在的 两个对角线信息和列号
+
+            if (cols[col])
+                continue; // 当前行已经放置了皇后
+            int rt_index = row - col + (n - 1);
+            if (this->right_top[rt_index])
+                continue;
+            int lt_index = row + col;
+            if (this->left_top[lt_index])
+                continue;
+            // if(cols[col]) continue; // 当前斜线已经放置了皇后
+            // 更新存放信息
+            this->right_top[rt_index] = true;
+            this->left_top[lt_index] = true;
+            cols[col] = true; // col已经放置皇后了
+            //
+            place(row + 1); // 准备去摆放下一行
+            // 重制一下，为了下一次回溯再深入的时候是可以深入的
+            this->right_top[rt_index] = false;
+            this->left_top[lt_index] = false;
+            cols[col] = false; // col已经放置皇后了
         }
     }
     /***
