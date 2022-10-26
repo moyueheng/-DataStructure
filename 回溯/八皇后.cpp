@@ -23,7 +23,7 @@ public:
         Main *m = new Main();
         m->placeQueens(8);
     }
-
+    int * queens;
     bool *cols;      // 某一列是否有皇后
     bool *left_top;  // 左上角到右下角的斜线角线，有没有皇后， 2n-1
     bool *right_top; // 右上角到左下角的对角线
@@ -36,6 +36,7 @@ public:
         {
             return;
         }
+        this->queens = new int[n];
         this->cols = new bool[n];
         this->left_top = new bool[(n << 1) + 1];
         this->right_top = new bool[(n << 1) + 1];
@@ -52,7 +53,7 @@ public:
             for (int col = 0; col < this->n; col++)
             {
 
-                if (this->cols[row]) // 这个
+                if (this->queens[row] == col) // 这个
                 {
                     printf("1 ");
                 }
@@ -82,11 +83,7 @@ public:
     {
         if (row == this->n)
         {
-            // this->show();
-            print_arr(this->cols, n);
-            print_arr(this->left_top, 2 * n - 1);
-            print_arr(this->right_top, 2 * n - 1);
-
+            this->show();
             this->ways += 1;
             return;
         }
@@ -103,11 +100,11 @@ public:
             int lt_index = row + col;
             if (this->left_top[lt_index])
                 continue;
-            // if(cols[col]) continue; // 当前斜线已经放置了皇后
             // 更新存放信息
             this->right_top[rt_index] = true;
             this->left_top[lt_index] = true;
             cols[col] = true; // col已经放置皇后了
+            queens[row] = col; // 为了方便画出结果图，记录行号和列号
             //
             place(row + 1); // 准备去摆放下一行
             // 重制一下，为了下一次回溯再深入的时候是可以深入的
