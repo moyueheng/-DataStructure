@@ -1,15 +1,10 @@
 {
-    // 使用 IntelliSense 了解相关属性。 
-    // 悬停以查看现有属性的描述。
-    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
         {
-            // lldb调试
             "name": "(lldb) 调试",
             "type": "cppdbg",
             "request": "launch",
-            // "program": "${workspaceFolder}/build/DataStructure",
             "program": "${workspaceFolder}/bin/${fileBasenameNoExtension}",
             "args": [],
             "stopAtEntry": false,
@@ -20,11 +15,9 @@
             "preLaunchTask": "C/C++: clang++ build active file"
         },
         {
-            "name": "(gdb) 启动", // 配置名称，将会在启动配置的下拉菜单中显示
+            "name": "(gdb) 启动",
             "type": "cppdbg",
             "request": "launch",
-            // "program": "${workspaceFolder}/build/DataStructure",
-            // "program": "${fileDirname}/bin/${fileBasenameNoExtension}",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
@@ -44,7 +37,20 @@
                     "ignoreFailures": true
                 }
             ],
-            "preLaunchTask": "C/C++: gcc-9 生成活动文件" // 调试前执行的任务，一般为编译程序。与tasks.json的label相对应
+            "preLaunchTask": "C/C++: gcc-9 生成活动文件"
+        },
+        {
+            "name": "C/C++: clang++ 生成和调试活动文件",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb",
+            "preLaunchTask": "C/C++: clang++ 生成活动文件"
         }
     ]
 }
